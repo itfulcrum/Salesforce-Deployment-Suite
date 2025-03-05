@@ -1,0 +1,17 @@
+name: Salesforce Delta Package Workflow
+on: [push]
+
+jobs:
+  create-delta-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run Salesforce Delta Package Action
+        uses: itfulcrum/salesforce-delta-action@v1.0.0
+        with:
+          workspace: "${{ github.workspace }}/head"
+          before_sha: "${{ github.event.before }}"
+          current_sha: "${{ github.sha }}"
+          package_dir: "force-app"

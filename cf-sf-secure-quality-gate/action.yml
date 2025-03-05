@@ -1,0 +1,30 @@
+name: "cf-sf-secure-quality-gate"
+description: "Runs a security scan and fails if there are security issues in the delta changes"
+author: "Cloudfulcrum"
+
+inputs:
+  sf_url:
+    description: "Salesforce instance URL"
+    required: true
+  sf_username:
+    description: "Salesforce username"
+    required: true
+  sf_password:
+    description: "Salesforce password"
+    required: true
+  sf_testlevel:
+    description: "Test level for deployment"
+    required: false
+    default: ""
+  sf_nocheckonly:
+    description: "Check-only deployment"
+    required: false
+    default: "false"
+
+branding:
+  icon: "upload-cloud"
+  color: "blue"
+
+runs:
+  using: "docker"
+  image: "./sfdx-deploy/Dockerfile"
