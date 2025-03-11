@@ -1,1 +1,1 @@
-# Salesforce-Deployment-Accelerator
+# Salesforce-Deployment-Suite
