@@ -1,6 +1,6 @@
 name: "cf-sf-lean-packager"
 description: "Create a metadata package with Lean & Delta changes"
-author: "Cloudfulcrum"
+author: "CloudFulcrum"
 
 inputs:
   workspace:

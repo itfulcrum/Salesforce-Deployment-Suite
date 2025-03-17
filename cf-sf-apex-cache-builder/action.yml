@@ -1,6 +1,6 @@
 name: "cf-sf-apex-cache-builder"
 description: "Creates an Apex Test Dependency Cache for optimized testing"
-author: "Cloudfulcrum"
+author: "CloudFulcrum"
 
 inputs:
   sf_url:

@@ -1,6 +1,6 @@
 name: "cf-sf-smart-deploy"
 description: "Deploys the metadata bundle to Salesforce"
-author: "Cloudfulcrum"
+author: "CloudFulcrum"
 
 inputs:
   sf_metadatapath:
