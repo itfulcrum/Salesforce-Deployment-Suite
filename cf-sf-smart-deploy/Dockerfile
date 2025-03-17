@@ -10,11 +10,11 @@ RUN wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/sta
     && ln -s /sfdx/bin/sfdx /usr/local/bin/sfdx \
     && sfdx --version
 
-# Install SFDX Delta Package
-RUN wget https://cfsfdx.s3.amazonaws.com/sfdxlean.jar -O /sfdxlean.jar
-
 # Set working directory
 WORKDIR /app
+
+# Copy JAR file and entrypoint script
+COPY ../sfdxlean.jar /app/sfdxlean.jar
 
 # Copy entry script
 COPY entrypoint.sh /app/entrypoint.sh
