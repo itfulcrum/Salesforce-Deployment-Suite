@@ -1,5 +1,8 @@
 FROM node:20
 
+# Set working directory
+WORKDIR /app
+
 # Install Java
 RUN apt-get update && apt-get install -y openjdk-18-jdk wget
 
@@ -10,13 +13,11 @@ RUN wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/sta
     && ln -s /sfdx/bin/sfdx /usr/local/bin/sfdx \
     && sfdx --version
 
-# Set working directory
-WORKDIR /app
-
 # Copy JAR file and entrypoint script
 COPY ../sfdxlean.jar /app/sfdxlean.jar
 
 # Copy entry script
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
+
 ENTRYPOINT ["/app/entrypoint.sh"]
