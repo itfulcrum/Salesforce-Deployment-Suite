@@ -14,7 +14,7 @@ RUN wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/sta
     && sfdx --version
 
 # Copy JAR file and entrypoint script
-COPY ../sfdxlean.jar /app/sfdxlean.jar
+COPY ../sfdxlean.jar /app/
 
 # Copy entry script
 COPY entrypoint.sh /app/entrypoint.sh
