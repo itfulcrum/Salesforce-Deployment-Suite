@@ -7,7 +7,7 @@ WORKDIR /app
 FROM openjdk:11-jdk
 
 # Install Salesforce CLI (official method)
-FROM salesforce/cli:2.17.0-slim
+FROM salesforce/cli:2.16.2-slim
 
 # Verify installation again
 RUN sf --version
