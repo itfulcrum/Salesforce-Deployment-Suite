@@ -1,23 +1,24 @@
-FROM node:20
+# Use Ubuntu as the base image
+FROM ubuntu:22.04 AS builder
 
 # Set working directory
 WORKDIR /app
 
-# Install Java
-RUN apt-get update && apt-get install -y openjdk-18-jdk wget
+# Final image with OpenJDK
+FROM openjdk:11-jdk
 
-# Install Salesforce CLI
-RUN wget https://developer.salesforce.com/media/salesforce-cli/sfdx/channels/stable/sfdx-linux-x64.tar.xz \
-    && mkdir /sfdx \
-    && tar xJf sfdx-linux-x64.tar.xz -C /sfdx --strip-components 1 \
-    && ln -s /sfdx/bin/sfdx /usr/local/bin/sfdx \
-    && sfdx --version
+# Install Salesforce CLI (official method)
+FROM salesforce/cli:2.17.0-slim
 
-# Copy JAR file and entrypoint script
-COPY ../sfdxlean.jar /app/
+# Verify installation again
+RUN sf --version
+
+# Copy JAR file
+COPY sfdxlean.jar /app/sfdxlean.jar
 
 # Copy entry script
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 
+# Set default command
 ENTRYPOINT ["/app/entrypoint.sh"]
